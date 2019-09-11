@@ -1,8 +1,27 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 <head>
 <title>Agendamento App</title>
 </head>
 <body>
-<h2>Agendamento App 1.0</h2>
+<h1>Agendamento App 1.0</h1>
+	<div><a href="/cadastrarEvento">Novo Evento</a></div>
+tste
+	<div th:each="evento : ${eventos}">
+		<div>
+			<span th:text="${evento.nome}"></span>
+		</div>
+		<div>
+			<span th:text="${evento.local}"></span>
+		</div>
+		<div>
+			<span th:text="${evento.data}"></span>
+		</div>
+		<div>
+			<span th:text="${evento.horario}"></span>
+		</div>
+	</div>
+
 </body>
 </html>

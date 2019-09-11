@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.eventoapp.models.Evento;
 import br.com.eventoapp.repository.EventoRepository;
@@ -25,6 +26,18 @@ public class EventoController {
 		eventoRepository.save(evento);
 		
 		return "evento/formEvento";
+	}
+	
+	
+	@RequestMapping("/eventos")
+	public ModelAndView listaEventos(){
+		ModelAndView modelAndView = new ModelAndView("index");
+		Iterable<Evento> eventos = eventoRepository.findAll();
+		modelAndView.addObject("eventos",eventos);
+		
+		return modelAndView;
+		
+		
 	}
 
 }
