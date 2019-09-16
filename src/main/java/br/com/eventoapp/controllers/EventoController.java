@@ -47,7 +47,7 @@ public class EventoController {
 	
 	@RequestMapping(value =  "detalheEvento/{codigo}" , method = RequestMethod.GET)
 	public ModelAndView detalheEvento(@PathVariable("codigo") long 	codigo ) {
-		Evento evento = eventoRepository.findByCodigo(codigo);
+		Evento evento = getCodigo(codigo);
 		ModelAndView modelAndView = new ModelAndView("evento/detalheEvento");
 		modelAndView.addObject("evento", evento);
 		
@@ -57,10 +57,15 @@ public class EventoController {
 	
 	@RequestMapping(value = "detalheEvento/{codigo}", method = RequestMethod.POST)
 	public String detalheEventoPost(@PathVariable("codigo") long codigo, Convidado convidado){
-		Evento evento = eventoRepository.findByCodigo(codigo);
+		Evento evento = getCodigo(codigo);
 		convidado.setEvento(evento);
 		convidadoRepository.save(convidado);
 		return "redirect:/detalheEvento/{codigo}";
+	}
+
+	private Evento getCodigo(long codigo) {
+		Evento evento = eventoRepository.findByCodigo(codigo);
+		return evento;
 	}
 
 }
