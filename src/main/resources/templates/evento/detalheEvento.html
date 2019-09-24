@@ -50,10 +50,27 @@
 				</div>
 		<button class="waves-effect waves-light btn" type="submit">Salvar</button>
 			</form>
+			<br />
+			<div><h5>Lista Convidados</h5></div>
+			<table>
+			<thead>
+				<th>Nome</th>
+				<th>RG</th>
+			</thead>
+			<tbody>
+			<div th:each="convidados: ${convidados}">
+			<tr>
+			<td><span th:text="${convidados.nomeConvidado}"></span></td>
+			<td><span th:text="${convidados.rg}"></span></td>
+			</tr>
+			</tbody>
+			</table>
+			</div>
 		</div>
 
 	</div>
 	</div>
+	
 
 	<!--JavaScript at end of body for optimized loading-->
 	<script type="text/javascript"
