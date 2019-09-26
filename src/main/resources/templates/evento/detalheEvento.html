@@ -15,6 +15,7 @@
 </head>
 <body>
 	<h2>Evento</h2>
+	
 	<div>
 		<a href="/eventos" class="waves-effect waves-light btn"> <i
 			class="material-icons left">view_list</i>Eventos
@@ -37,7 +38,7 @@
 			</p>
 		</div>
 		<h5>Cadastrar Convidado</h5>
-		
+		<th:block th:include="./mensagemValidacao"></th:block>
 			<form class="col s12" method="post">
 				<div class="row">
 					<div class="input-field col s6">
