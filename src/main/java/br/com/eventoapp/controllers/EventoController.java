@@ -53,6 +53,13 @@ public class EventoController {
 		
 	}
 	
+	@RequestMapping("/deletarEvento")
+	public String deletarEvento(long codigo) {
+		Evento evento = eventoRepository.findByCodigo(codigo);
+		eventoRepository.delete(evento);
+		return "redirect:/eventos";
+	}
+	
 	@RequestMapping(value = "detalheEvento/{codigo}", method = RequestMethod.GET)
 	public ModelAndView detalheEvento(@PathVariable("codigo") long codigo) {
 		
@@ -84,6 +91,19 @@ public class EventoController {
 		attributes.addFlashAttribute("mensagem", "Convidado adicionado com sucesso!");
 		return "redirect:/detalheEvento/{codigo}";
 	}
+	
+	@RequestMapping("deletarConvidado")
+	public String deletarConvidado(String rg) {
+		Convidado convidado = convidadoRepository.findByRg(rg);
+		convidadoRepository.delete(convidado);
+		
+		Evento evento = convidado.getEvento();
+		long codigoLong = evento.getCodigo();
+		String codigo = Long.toString(codigoLong);
+		return "redirect:/detalheEvento/"+codigo;
+		
+	}
+	
 
 	private Evento getCodigo(long codigo) {
 		Evento evento = eventoRepository.findByCodigo(codigo);
