@@ -14,12 +14,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
-	<h1>Agendamento App 1.0</h1>
-	<div>
-		<a href="/cadastrarEvento" class="waves-effect waves-light btn"> <i
-			class="material-icons left">control_point</i>Novo Evento
-		</a>
-	</div>
+
+
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo">Agendamento App</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="/cadastrarEvento"
+					class="waves-effect waves-light btn"> <i
+						class="material-icons left">control_point</i>Novo Evento
+				</a></li>
+			</ul>
+		</div>
+	</nav>
+
 
 	<table>
 		<thead>
@@ -27,13 +35,20 @@
 			<th>Local</th>
 			<th>Data</th>
 			<th>Horário</th>
+			<th>Deletar</th>
 		</thead>
 		<tbody>
+		
 			<tr th:each="evento : ${eventos}">
-				<td><a th:href="${(#mvc.url('EC#detalheEvento').arg(0, evento.codigo)).build()}"><span th:text="${evento.nome}"></span></a></td>
+				<td><a
+					th:href="${(#mvc.url('EC#detalheEvento').arg(0, evento.codigo)).build()}"><span
+						th:text="${evento.nome}"></span></a></td>
 				<td><span th:text="${evento.local}"></span></td>
 				<td><span th:text="${evento.data}"></span></td>
 				<td><span th:text="${evento.horario}"></span></td>
+				<td><a 
+					th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigo)).build()}"><i
+						class="material-icons left">delete</i></a></td>
 			</tr>
 		</tbody>
 	</table>
