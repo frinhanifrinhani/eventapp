@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "evento" , schema = "eventoapp")
+@Table(name="evento", schema = "eventoapp")
 public class Evento implements Serializable {
 
 	private static final long serialVersionUID = 1l;
