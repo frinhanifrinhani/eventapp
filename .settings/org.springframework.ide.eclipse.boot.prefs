@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-spring.boot.launch.profile.history=clean build;
+spring.boot.launch.profile.history=dev;clean build;

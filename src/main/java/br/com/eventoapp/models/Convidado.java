@@ -3,11 +3,13 @@ package br.com.eventoapp.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
+@Table(name="convidado", schema = "eventoapp")
 public class Convidado {
 	
 	@Id
